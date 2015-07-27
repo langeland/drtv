@@ -1,0 +1,25 @@
+{
+	"name": "langeland/rosemary",
+	"description": "Generate API for the TYPO3 projects",
+	"license": "LGPL-3.0+",
+	"config": {
+		"vendor-dir": "Libraries",
+		"bin-dir": "bin"
+	},
+	"autoload": {
+		"psr-4": {
+			"Chili\\": "Classes/"
+		}
+	},
+	"require": {
+		"symfony/console": "3.0.*@dev",
+		"symfony/yaml": "3.0.*@dev",
+		"symfony/process": "3.0.*@dev"
+	},
+	"require-dev": {
+	},
+	"suggest": {
+	},
+	"scripts": {
+	}
+}
