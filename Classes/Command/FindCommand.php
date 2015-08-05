@@ -2,7 +2,7 @@
 
 namespace Chili\Command;
 
-class SearchCommand extends \Chili\Command\AbstractCommand {
+class FindCommand extends \Chili\Command\AbstractCommand {
 
 	public function __construct() {
 		parent::__construct();
@@ -10,7 +10,7 @@ class SearchCommand extends \Chili\Command\AbstractCommand {
 
 	protected function configure() {
 		$this
-			->setName('search')
+			->setName('find')
 			->setDescription('Search dr.dk/tv')
 			//->setHelp(file_get_contents(ROOT_DIR . '/Resources/CreateCommandHelp.text'))
 			->addArgument('term', \Symfony\Component\Console\Input\InputArgument::REQUIRED, 'Search term');
