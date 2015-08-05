@@ -2,10 +2,6 @@
 
 namespace Chili\Command;
 
-use Chili\Utility\General;
-use Symfony\Component\Yaml\Yaml;
-use Symfony\Component\Yaml\Exception\ParseException;
-
 class ListCommand extends \Chili\Command\AbstractCommand {
 
 	public function __construct() {
@@ -136,8 +132,12 @@ class ListCommand extends \Chili\Command\AbstractCommand {
 					if (preg_match('/\.mp4$/', $download['videoLink'])) {
 						$fp = fopen($filename, 'w+');
 						$ch = curl_init($download['videoLink']);
-						// curl_setopt($ch, CURLOPT_PROGRESSFUNCTION, 'progress');
-						// curl_setopt($ch, CURLOPT_NOPROGRESS, false); // needed to make progress function work
+						curl_setopt($ch, CURLOPT_NOPROGRESS, false); // needed to make progress function work
+						curl_setopt($ch, CURLOPT_PROGRESSFUNCTION, function ($resource, $download_size, $downloaded, $upload_size, $uploaded) use ($output, $progress, $download) {
+							if ($download_size > 0) {
+								$progress->setProgress(round($downloaded / $download_size * 100));
+							}
+						});
 						curl_setopt($ch, CURLOPT_FILE, $fp);
 						curl_setopt($ch, CURLOPT_FOLLOWLOCATION, TRUE);
 						curl_exec($ch);
@@ -173,7 +173,7 @@ class ListCommand extends \Chili\Command\AbstractCommand {
 					\Chili\Utility\General::addDownloaded($slug);
 				}
 			}
-		} else {
+		         } else {
 			$output->writeln('do some debugging');
 		}
 

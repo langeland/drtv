@@ -13,9 +13,7 @@ define('ROOT_DIR', __DIR__);
 setlocale(LC_ALL, 'da_DK');
 date_default_timezone_set('Europe/Copenhagen');
 
-$application = new \Symfony\Component\Console\Application('DR TV Downloader', '0.3-dev');
+$application = new \Symfony\Component\Console\Application('DR TV Downloader', '0.4-dev');
 $application->add(new Chili\Command\SearchCommand());
-$application->add(new Chili\Command\GetCommand());
-$application->add(new Chili\Command\ListCommand());
-$application->add(new Chili\Command\TestCommand());
+$application->add(new Chili\Command\FetchCommand());
 $application->run();

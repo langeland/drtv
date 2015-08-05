@@ -2,9 +2,6 @@
 
 namespace Chili\Command;
 
-use Symfony\Component\Yaml\Yaml;
-use Symfony\Component\Yaml\Exception\ParseException;
-
 class SearchCommand extends \Chili\Command\AbstractCommand {
 
 	public function __construct() {

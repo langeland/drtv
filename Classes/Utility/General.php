@@ -37,7 +37,19 @@ class General {
 
 	}
 
-	public static function download($slug, $filename = '') {
+	public static function getWatchList() {
+		$dateFile = $_SERVER['HOME'] . '/.drtv';
+		if (is_file($dateFile)) {
+			$data = json_decode(file_get_contents($dateFile), TRUE);
+			if (array_key_exists('watch', $data)) {
+				return $data['watch'];
+			}
+		} else {
+			return array();
+		}
+	}
+
+	public static function download($slug) {
 
 	}
 
