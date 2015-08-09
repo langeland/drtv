@@ -16,4 +16,5 @@ date_default_timezone_set('Europe/Copenhagen');
 $application = new \Symfony\Component\Console\Application('DR TV Downloader', '0.4-dev');
 $application->add(new Chili\Command\FindCommand());
 $application->add(new Chili\Command\FetchCommand());
+$application->add(new Chili\Command\WatchCommand());
 $application->run();

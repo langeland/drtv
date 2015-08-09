@@ -39,8 +39,6 @@ class Downloader {
 			$data['bar'] = \Chili\Utility\WebService::call($data['programcard']['PrimaryAsset']['Uri']);
 		}
 
-
-
 		/**************************************************************************************
 		 * Resolving best video target
 		 *************************************************************************************/
@@ -51,7 +49,6 @@ class Downloader {
 		$video_target = 'N/A';
 
 		foreach ($data['bar']['Links'] as $binaryAssetLink) {
-//			die(print_r($binaryAssetLink,1));
 			if ($binaryAssetLink['FileFormat'] != 'mp4' || empty($binaryAssetLink['Uri'])) {
 				continue;
 			}
@@ -67,7 +64,7 @@ class Downloader {
 			}
 		}
 
-		if(is_null($video_link)){
+		if (is_null($video_link)) {
 			throw new \Exception('Unable to resolve useble video target for ' . $slug);
 		}
 

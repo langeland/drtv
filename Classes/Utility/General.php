@@ -49,8 +49,34 @@ class General {
 		}
 	}
 
-	public static function download($slug) {
+	public static function addWatchListSlug($slug) {
+		$dateFile = $_SERVER['HOME'] . '/.drtv';
+		if (is_file($dateFile)) {
+			$data = json_decode(file_get_contents($dateFile), TRUE);
+		} else {
+			$data = array();
+		}
+		array_push($data['watch'], $slug);
 
+		file_put_contents($dateFile, json_encode($data, JSON_PRETTY_PRINT));
+	}
+
+	public static function removeWatchListSlug($slug) {
+		$dateFile = $_SERVER['HOME'] . '/.drtv';
+		if (is_file($dateFile)) {
+			$data = json_decode(file_get_contents($dateFile), TRUE);
+		} else {
+			return;
+		}
+
+		foreach ($data['watch'] as $key => $value) {
+			if ($value == $slug) {
+				unset($data['watch'][$key]);
+				break;
+			}
+		}
+
+		file_put_contents($dateFile, json_encode($data, JSON_PRETTY_PRINT));
 	}
 
 }

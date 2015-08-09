@@ -23,7 +23,7 @@ class FindCommand extends \Chili\Command\AbstractCommand {
 
 		$formatter = $this->getHelper('formatter');
 
-		$data = $this->call('https://www.dr.dk/mu-online/api/1.2/list/view/quicksearch/' . urlencode($input->getArgument('term')) . '?limitprograms=75&limitepisodes=75');
+		$data = \Chili\Utility\WebService::call('https://www.dr.dk/mu-online/api/1.2/list/view/quicksearch/' . urlencode($input->getArgument('term')) . '?limitprograms=75&limitepisodes=75');
 
 		foreach ($data as $block => $blockItems) {
 			if (!count($blockItems)) {
