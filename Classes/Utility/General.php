@@ -10,7 +10,7 @@ class General {
 
 	public static function isDownloaded($slug) {
 
-		$dateFile = $_SERVER['HOME'] . '/.drtv';
+		$dateFile = WORK_DIR . '/.drtv';
 		if (is_file($dateFile)) {
 			$data = json_decode(file_get_contents($dateFile), TRUE);
 			if (array_key_exists($slug, $data['downloaded'])) {
@@ -22,7 +22,7 @@ class General {
 	}
 
 	public static function addDownloaded($slug) {
-		$dateFile = $_SERVER['HOME'] . '/.drtv';
+		$dateFile = WORK_DIR . '/.drtv';
 		if (is_file($dateFile)) {
 			$data = json_decode(file_get_contents($dateFile), TRUE);
 		} else {
@@ -38,7 +38,7 @@ class General {
 	}
 
 	public static function getWatchList() {
-		$dateFile = $_SERVER['HOME'] . '/.drtv';
+		$dateFile = WORK_DIR . '/.drtv';
 		if (is_file($dateFile)) {
 			$data = json_decode(file_get_contents($dateFile), TRUE);
 			if (array_key_exists('watch', $data)) {
@@ -50,7 +50,7 @@ class General {
 	}
 
 	public static function addWatchListSlug($slug) {
-		$dateFile = $_SERVER['HOME'] . '/.drtv';
+		$dateFile = WORK_DIR . '/.drtv';
 		if (is_file($dateFile)) {
 			$data = json_decode(file_get_contents($dateFile), TRUE);
 		} else {
@@ -62,7 +62,7 @@ class General {
 	}
 
 	public static function removeWatchListSlug($slug) {
-		$dateFile = $_SERVER['HOME'] . '/.drtv';
+		$dateFile = WORK_DIR . '/.drtv';
 		if (is_file($dateFile)) {
 			$data = json_decode(file_get_contents($dateFile), TRUE);
 		} else {
